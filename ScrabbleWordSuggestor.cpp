@@ -22,6 +22,45 @@ public:
     map< int, vector<string> > scored_list;
     set < pair<string,int> > POWERSET_RACKS;
 
+public:
+    string RACK_STRING;
+
+    ScrabbleWordSuggestor(string rack, ifstream& sowpodsFile) {
+        generateSowpodsMap(sowpodsFile);
+    }
+
+    void generateSowpodsMap(ifstream &file) {
+        string word;
+        while(getline(file, word)) {
+            if ( word.length() <=  MAX_RACK_LENGTH ) {
+                insertInMap(getSortedString(word), word);
+            }
+        }
+    }
+
+    void insertInMap(string key, string value) {
+        map<string, vector<string> >::iterator it = sowpods.begin();
+
+        if( sowpods.count(key) ) {
+            it = sowpods.find( key );
+            (it->second).push_back(value);
+        }
+
+        else {
+            vector<string> newVector;
+            newVector.push_back(value);
+            sowpods.insert ( std::pair<string, vector<string> >( key, newVector) );
+        }
+    }
+
+    string getSortedString(string word) {
+        std::string sortedWord = word;
+        std::sort(sortedWord.begin(), sortedWord.end());
+        return sortedWord;
+    }
+
+
+
 };
 int main()
 {
@@ -30,13 +69,8 @@ int main()
     string line = "";
     try {
 		file.open(FILENAME.c_str());
-		if (file.is_open()) {
-            while ( getline (file,line) ) {
-                // TODO sort the letters of the word
-                // add to map
-            }
-            file.close();
-        }
+		ScrabbleWordSuggestor scrabble("apple", file);
+
     }
 	catch (std::ifstream::failure e) {
     	std::cerr << "Exception opening/reading/closing file\n";
