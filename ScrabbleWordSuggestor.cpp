@@ -60,7 +60,16 @@ public:
         return sortedWord;
     }
 
-
+	int computeScore(string str, int scoreCompensation) {
+        int score = 0;
+        for ( int i = 0; i < str.length(); i++ ) {
+            char ch = str[i];
+            if ( 'a' <= ch && ch <= 'z' ) {
+                score += ALPHABET_SCORE[ ch - 'a' ];
+            }
+        }
+        return score - scoreCompensation;;
+    }
 
 };
 int main()
