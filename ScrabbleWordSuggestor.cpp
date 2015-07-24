@@ -30,22 +30,51 @@ public:
     ScrabbleWordSuggestor(string rack, string constraint, ifstream& sowpodsFile) {
 
 		constraint_spec = constraint;    	
-    	if(!(constraint_spec.empty())){
-    		
-			replace(constraint_spec.begin(), constraint_spec.end(), ',', '.');
-			for(int i=0; i<constraint_spec.length(); i++){
-				if(constraint[i] != ','){
-					rack += constraint_spec[i];
-				}
-			}
-			
-			
-		patternToCheck = constraint_spec;
+    	if(!(constraint_spec.empty())){	
+    		patternToCheck = convertToRegex(constraint_spec);
+		}
+		//patternToCheck = constraint_spec;
         generateSowpodsMap(sowpodsFile);
         generateScoredList(rack);
     }
-    
-}
+
+	string convertToRegex(string constraint)
+	{
+			//		replace(constraint_spec.begin(), constraint_spec.end(), ',', '.');
+        string regex = "";    
+        int i=0;
+        while (constraint[i] == ',' && i < constraint.length())
+        {
+            i++;
+        }
+        int first_char = i++;
+        int last_char = 0;
+        while(i != constraint.length())
+        {
+            if(constraint[i]!=',')
+            {
+                last_char = i;
+            }
+            i++;
+        }
+        if(first_char)
+        	regex += "(.*)";
+        for (int j = first_char; j <= last_char; j++)
+    	{
+            if(constraint[j] != ',')
+            {   
+                regex += constraint[j];
+            }
+            else
+            {   
+                regex += '.';
+            }
+        }
+    	if(last_char != constraint.length()-1)
+            regex += "(.*)";
+        cout<<regex<<endl;
+        return regex;
+	}
 
     int getCharScore(char ch) {
         return ALPHABET_SCORE[ ch - 'a' ];
@@ -192,10 +221,10 @@ public:
 int main(int argc, char* argv[]) {
     ifstream file;
     string FILENAME = "C:\\Users\\test\\Documents\\GitHub\\Scrabble\\sowpods.txt";
-	string constraint = "a,,,e";
+	string constraint = ",p,l,";
     try {
 		file.open(FILENAME.c_str());
-		ScrabbleWordSuggestor scrabble("appled", constraint, file);
+		ScrabbleWordSuggestor scrabble("apple*d", constraint, file);
         scrabble.suggestWords();
         cout << "======================================================================================================================" << endl;
         cout << "======================================================================================================================" << endl;
