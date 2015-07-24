@@ -7,6 +7,7 @@
 #include <vector>
 #include <cmath>
 #include <set>
+#include <regex>
 
 using namespace std;
 
@@ -21,13 +22,30 @@ public:
     map< string, vector<string> > sowpods;
     map< int, vector<string> > scored_list;
     set < pair<string,int> > POWERSET_RACKS;
+    
 public:
     string RACK_STRING;
+    string constraint_spec;
+	regex patternToCheck;
+    ScrabbleWordSuggestor(string rack, string constraint, ifstream& sowpodsFile) {
 
-    ScrabbleWordSuggestor(string rack, ifstream& sowpodsFile) {
+		constraint_spec = constraint;    	
+    	if(!(constraint_spec.empty())){
+    		
+			replace(constraint_spec.begin(), constraint_spec.end(), ',', '.');
+			for(int i=0; i<constraint_spec.length(); i++){
+				if(constraint[i] != ','){
+					rack += constraint_spec[i];
+				}
+			}
+			
+			
+		patternToCheck = constraint_spec;
         generateSowpodsMap(sowpodsFile);
         generateScoredList(rack);
     }
+    
+}
 
     int getCharScore(char ch) {
         return ALPHABET_SCORE[ ch - 'a' ];
@@ -157,11 +175,14 @@ public:
     }
 
     void suggestWords(){
+    	
         for ( map<int, vector<string> >::reverse_iterator r = scored_list.rbegin(); r != scored_list.rend(); ++r ) {
 
             cout << r->first << "\t\t" ;
             for ( string s : r->second ) {
-                cout << s << " " ;
+            	if(!constraint_spec.empty() && regex_match(s,patternToCheck)){
+					cout << s << " " ;
+				}
             }
             cout << endl;
         }
@@ -170,11 +191,11 @@ public:
 
 int main(int argc, char* argv[]) {
     ifstream file;
-    string FILENAME = "sowpods.txt";
-
+    string FILENAME = "C:\\Users\\test\\Documents\\GitHub\\Scrabble\\sowpods.txt";
+	string constraint = "a,,,e";
     try {
 		file.open(FILENAME.c_str());
-		ScrabbleWordSuggestor scrabble("apple*d", file);
+		ScrabbleWordSuggestor scrabble("appled", constraint, file);
         scrabble.suggestWords();
         cout << "======================================================================================================================" << endl;
         cout << "======================================================================================================================" << endl;
