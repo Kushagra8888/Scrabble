@@ -8,7 +8,7 @@
 <ol>
 <li>From the dictionary of words, create a map with sorted word as key and list of anagrams as value.</li>
 <li>Given the input rack of words, form all possible sets (power set of rack). Eg: for {a,b,c}, power set is {{},{a},{b},{c},{ab},{bc},{ac},{abc}}.</li>
-<h3>Dealing with blank tiles</h3>
+<h4>Dealing with blank tiles</h4>
 <li>To handle the spaces, also form a power set considering the different combinations of blank spaces replaced. Eg: for {a,b,c, }, power set is
 {{a*}, {b*}, {c*}, {ab*}, {bc*}, {ac*}, {abc*}}.</li>
 <li>Now, compare the rack with the keys in the map and find the words with maximum score.</li>
