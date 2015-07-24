@@ -1,15 +1,17 @@
-<h3>Input:</h3><br />
+<h3>Input:</h3>
 <ol>
 <li>Letters in the rack as String</li>
 <li>Number of top values(i.e, top n values) </li>
 </ol>
 
 <h3>Approach</h3>
-Create a list of words(representedd by a class which holds it's score and the word itself)<br />
-Sort the list based on descending order of the scores <br />
-Letters in the rack are compared with the list of words sorted based on their scores<br />
-The first "n" dictionary words that match the rack letters are stored in a list.<br />
-Team 1 returns this list as their output<br />
+<ol>
+<li>Create a list of words(representedd by a class which holds it's score and the word itself)</li>
+<li>Sort the list based on descending order of the scores <br /></li>
+<li>Letters in the rack are compared with the list of words sorted based on their scores</li>
+<li>The first "n" dictionary words that match the rack letters are stored in a list.</li>
+<li>Team 1 returns this list as their output</li>
+</ol>
 
 <h3>Dealing with blank tiles</h3>
 Team2:<br />
