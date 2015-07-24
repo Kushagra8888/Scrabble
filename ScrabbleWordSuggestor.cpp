@@ -33,14 +33,12 @@ public:
     	if(!(constraint_spec.empty())){	
     		patternToCheck = convertToRegex(constraint_spec);
 		}
-		//patternToCheck = constraint_spec;
         generateSowpodsMap(sowpodsFile);
         generateScoredList(rack);
     }
 
 	string convertToRegex(string constraint)
 	{
-			//		replace(constraint_spec.begin(), constraint_spec.end(), ',', '.');
         string regex = "";    
         int i=0;
         while (constraint[i] == ',' && i < constraint.length())
