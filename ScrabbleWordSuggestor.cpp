@@ -12,7 +12,7 @@
 using namespace std;
 
 const string EMPTY_TILE = "*";
-const int MAX_RACK_LENGTH = 7;
+const int MAX_RACK_LENGTH = 10;
 
 const int ALPHABET_SCORE[] = {1,3,3,2, 1,4,2,4, 1,8,5,1,3, 1,1,3,10, 1,1,1,1, 4,4,8,4, 10};
 
@@ -70,7 +70,6 @@ public:
         }
     	if(last_char != constraint.length()-1)
             regex += "(.*)";
-        cout<<regex<<endl;
         return regex;
 	}
 
@@ -205,10 +204,11 @@ public:
     	
         for ( map<int, vector<string> >::reverse_iterator r = scored_list.rbegin(); r != scored_list.rend(); ++r ) {
 
-            cout << r->first << "\t\t" ;
+            
             for ( string s : r->second ) {
             	if(!constraint_spec.empty() && regex_match(s,patternToCheck)){
-					cout << s << " " ;
+            		cout << r->first << "\t" ;
+					cout << s << endl ;
 				}
             }
             cout << endl;
@@ -218,15 +218,20 @@ public:
 
 int main(int argc, char* argv[]) {
     ifstream file;
-    string FILENAME = "C:\\Users\\test\\Documents\\GitHub\\Scrabble\\sowpods.txt";
-	string constraint = ",p,l,";
+    cout << "Enter the file path of the dictionary!\n";
+    string FILENAME ;
+    cin >> FILENAME ;
+    cout << "Enter a constraint.\n";
+	string constraint;
+	cin >> constraint;
+	string rackOfLetters;
+	cout << "Enter the letters of the rack (use * for blank tile)\n";
+	cin >> rackOfLetters;
     try {
 		file.open(FILENAME.c_str());
-		ScrabbleWordSuggestor scrabble("apple*d", constraint, file);
-        scrabble.suggestWords();
-        cout << "======================================================================================================================" << endl;
-        cout << "======================================================================================================================" << endl;
-        scrabble.generateScoredList("abcdef");
+		ScrabbleWordSuggestor scrabble(rackOfLetters, constraint, file);
+        cout << endl << endl;
+        scrabble.generateScoredList(rackOfLetters);
         scrabble.suggestWords();
 
 
