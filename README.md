@@ -7,3 +7,8 @@ Sort the list based on descending order of the scores
 Letters in the rack are compared with the list of words sorted based on their scores
 The first "n" dictionary words that match the rack letters are stored in a list.
 Team 1 returns this list as their output
+
+Team2:
+  Find a vector of pairs that contains all words that can be generated from the rack (which may contain spaces) with their     scores.
+  Once the words are found, subtract the score of the character that was actually a blank tile.
+  get the top n words.
