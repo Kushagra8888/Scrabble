@@ -1,6 +1,8 @@
 <h3>Input:</h3><br />
-Letters in the rack as String<br />
-Number of top values(i.e, top n values) <br />
+<ol>
+<li>Letters in the rack as String</li>
+<li>Number of top values(i.e, top n values) </li>
+</ol>
 
 <h3>Approach</h3>
 Create a list of words(representedd by a class which holds it's score and the word itself)<br />
