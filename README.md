@@ -30,9 +30,7 @@ From a rack letters finds the highest scoring word that could me made out of the
 
 ##Dealing with blank tiles (Team 2)
 
-Find a vector of pairs that contains all words that can be generated from the rack (which may contain any number of blank tiles) with their scores.
-Once the words are found, subtract the score of the character that was actually a blank tile.
-get the top n words.
+Replace the blanks with all all possible characters and proceed as before.
 
 ##Added Constraints (Team 3)
 
