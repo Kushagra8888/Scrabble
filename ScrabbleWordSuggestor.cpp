@@ -1,5 +1,10 @@
-# include<iostream>
-# include<map>
+#include<iostream>
+#include<map>
+#include<algorithm>
+#include<set>
+#include<vector>
+using namespace std;
+
 class ScrabbleWordSuggestor {
 
 public:
@@ -26,11 +31,11 @@ public:
         }
     }
 
-}
+};
 int main()
 {
 	
-	map<>
-	getchar();
+	// map<>
+	// getchar();
 	return 0;
 }
