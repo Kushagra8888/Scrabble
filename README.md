@@ -12,7 +12,7 @@
 <li>To handle the spaces, also form a power set considering the different combinations of blank spaces replaced. Eg: for {a,b,c, }, power set is
 {{a*}, {b*}, {c*}, {ab*}, {bc*}, {ac*}, {abc*}}.</li>
 <li>Now, compare the rack with the keys in the map and find the words with maximum score.</li>
-<li>The first "n" dictionary words that match the rack letters are stored in a list.</li>
+<li>The words that match the rack letters are stored in a list in descending order of their scores.</li>
 <li>In case of blank tiles, Find a vector of pairs that contains all words that can be generated from the rack (which may contain any number of blank tiles) with their scores.<br />
 Once the words are found, subtract the score of the character that was actually a blank tile.<br />
 And  get the top n words.<br /></li>
