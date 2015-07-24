@@ -18,3 +18,10 @@ Team2:<br />
   Find a vector of pairs that contains all words that can be generated from the rack (which may contain any number of blank tiles) with their scores.<br />
   Once the words are found, subtract the score of the character that was actually a blank tile.<br />
   get the top n words.<br />
+
+<h3>Added Constraints</h3>
+Team 3 will deal with the additional constraints. <br/>
+<ol>
+<li>Get words with a specified length</li>
+<li>Get words that contain specified letters</li>
+</ol>
