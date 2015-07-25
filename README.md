@@ -45,6 +45,7 @@ APIS
 -------
 ### SCRABLLEWORDS (team1)
 
+####Class: Sowpods
 1. arraylist<string> getValidWordsFor(string word)
 2. arraylist<string> getValidWordsFor(string word, int length)
 
@@ -52,11 +53,14 @@ APIS
 
 1. int calculateScore(letters, rack);
 
-### BlankSpaceHandler
+### BlankSpaceHandler (Team 2)
+
+###Class: BlankSpaceHandler
 1. ArrayList<String> getBlankReplacedRacks(string rack);
 
-### ConstraintHandler
+### ConstraintHandler (Team 3)
 
+###Class: ConstraintHandler
 1. arraylist<string> fetchValidWords(rack, n)
 2. arraylist<string> fetchValidWords(rack, constraint, n)
 
