@@ -1,10 +1,5 @@
-//package Day6.Scrabble.src;
-
 import java.util.ArrayList;
 
-/**
- * Created by test on 7/25/2015.
- */
 public class BlankSpaceHandler {
 
     ArrayList<String> spaceReplacedRack;
