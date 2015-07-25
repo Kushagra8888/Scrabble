@@ -2,21 +2,28 @@
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import Sowpods;
-import BlankSpaceHandler;
 
-class ConstraintHandler
-{
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author test
+ */
+public class ConstraintHandler {
     Sowpods s;
     BlankSpaceHandler b;
     
     public ConstraintHandler()
     {
-        s  = new Sowpopds();
+        s  = new Sowpods();
         b = new BlankSpaceHandler();
     }
 
-    public ArrayList<String> fetchValidWords(String rack, String constraint, int length)
+    public ArrayList<String> fetchValidWords(String rack, String constraint)
     {
         ArrayList<String> possibleWords;
         ArrayList<String> matchedWords = new ArrayList<>();
@@ -26,11 +33,14 @@ class ConstraintHandler
             patternToCheck = generateRegex(constraint);
             rack = modifyRack(rack, constraint);
         }
-        ArrayList<String> modified_racks = b.getBlankSpaceReplacedRacks(rack);
+        System.out.println("Pattern: " + patternToCheck);
+        System.out.println("Modified Rack: " + rack);
+        ArrayList<String> modified_racks = b.getBlankReplacedRacks(rack);
         
-        for (String rack : modified_racks)
+        System.out.println(modified_racks);
+        for (String each_rack : modified_racks)
         {
-            possibleWords = s.getValidWordsFor(rack);
+            possibleWords = s.getValidWordsFor(each_rack);
             for( String word: possibleWords)
             {
                 if(isMatching(word, patternToCheck))
@@ -49,7 +59,7 @@ class ConstraintHandler
     
     private String generateRegex(String constraint)
     {
-        return (constraint.replaceAll("*", "(.*)"));
+        return (constraint.replaceAll("\\*", "(.*)"));
     }
     
     private boolean isMatching(String word, String patternToCheck)
@@ -58,4 +68,11 @@ class ConstraintHandler
         Matcher matcher = pattern.matcher(word);
         return (matcher.find());
     } 
+
+    /*public static void main(String args[])
+    {
+        ConstraintHandler constraintHandler = new ConstraintHandler();
+        
+        System.out.println(constraintHandler.fetchValidWords("abcd_", "*a.c"));
+    }*/
 }
