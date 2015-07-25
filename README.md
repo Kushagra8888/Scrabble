@@ -39,3 +39,30 @@ Team 3 will deal with the additional constraints.
 2. Get words that contain specified letters.
 
 Approach: Construct a regular expression with the given constraints and return all possible words that match the regex.
+
+
+APIS
+-------
+SCRABLLEWORDS (team1)
+1. arraylist<string> getValidWordsFor(string word)
+2. arraylist<string> getValidWordsFor(string word, int length)
+
+-------
+SCORECALCULATE
+
+1. int calculateScore(letters, rack);
+-------
+
+team 2
+
+Class: BlankSpaceHandler
+1. 
+ ArrayList<String> getBlankReplacedRacks(string rack);
+--------
+team3 
+ConstraintHandler
+
+1. arraylist<string> fetchValidWords(rack, n)
+2. arraylist<string> fetchValidWords(rack, constraint, n)
+
+
