@@ -1,3 +1,4 @@
+//package Day6.Scrabble.src;
 
 import java.util.ArrayList;
 
@@ -40,13 +41,13 @@ public class BlankSpaceHandler {
         }
     }
 
-    public ArrayList<String> getBlankReplacedRacks(String rackWithSpaces) {
+    public ArrayList<String> getBlankSpaceReplacedRacks(String rackWithSpaces) {
         generateRack(rackWithSpaces);
         return spaceReplacedRack;
     }
 
     public static void main(String args[]) {
         BlankSpaceHandler blankSpaceHandler = new BlankSpaceHandler();
-        System.out.println(blankSpaceHandler.getBlankReplacedRacks("_ab_"));
+        System.out.println(blankSpaceHandler.getBlankSpaceReplacedRacks("_ab_"));
     }
 }

@@ -1,4 +1,4 @@
-package Day6.Scrabble.src;
+//package Day6.Scrabble.src;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package Day6.Scrabble.src;
+//package Day6.Scrabble.src;
 
 /**
  * Created by test on 7/25/2015.

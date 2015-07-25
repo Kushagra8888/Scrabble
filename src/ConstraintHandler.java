@@ -1,3 +1,4 @@
+//package Day6.Scrabble.src;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -11,7 +12,7 @@ class ConstraintHandler
     
     public ConstraintHandler()
     {
-        s  = new Sowpopds();
+        s  = new Sowpods();
         b = new BlankSpaceHandler();
     }
 

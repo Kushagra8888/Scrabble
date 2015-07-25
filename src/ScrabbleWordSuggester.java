@@ -1,6 +1,7 @@
-package Day6.Scrabble.src;
+//package Day6.Scrabble.src;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Created by test on 7/25/2015.
@@ -21,17 +22,18 @@ public class ScrabbleWordSuggester {
         ArrayList<String> validWords;
         ScoreGenerator scoreGenerator = new ScoreGenerator();
 
-        ConstraintHandler constraintHandler = new ConstratintHandler();
+        ConstraintHandler constraintHandler = new ConstraintHandler();
         if(constraints.isEmpty())
-            validWords = constraintHandler.fetchValidWords(rack, outputLimit);
+            validWords = constraintHandler.fetchValidWords(rack);
         else
-            validWords = constraintHandler.fetchValidWords(rack, constraints, outputLimit);
+            validWords = constraintHandler.fetchValidWords(rack, constraints);
 
 
     }
 
     public static void main(String args[]){
 
+        Scanner sc = new
     }
 }
 
