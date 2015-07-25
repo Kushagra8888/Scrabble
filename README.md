@@ -43,24 +43,19 @@ Approach: Construct a regular expression with the given constraints and return a
 
 APIS
 -------
-SCRABLLEWORDS (team1)
+### SCRABLLEWORDS (team1)
+
 1. arraylist<string> getValidWordsFor(string word)
 2. arraylist<string> getValidWordsFor(string word, int length)
 
--------
-SCORECALCULATE
+### SCORECALCULATE
 
 1. int calculateScore(letters, rack);
--------
 
-team 2
+### BlankSpaceHandler
+1. ArrayList<String> getBlankReplacedRacks(string rack);
 
-Class: BlankSpaceHandler
-1. 
- ArrayList<String> getBlankReplacedRacks(string rack);
---------
-team3 
-ConstraintHandler
+### ConstraintHandler
 
 1. arraylist<string> fetchValidWords(rack, n)
 2. arraylist<string> fetchValidWords(rack, constraint, n)
