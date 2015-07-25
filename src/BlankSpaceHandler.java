@@ -1,10 +1,5 @@
-package Day6;
-
 import java.util.ArrayList;
 
-/**
- * Created by test on 7/25/2015.
- */
 public class BlankSpaceHandler {
 
     ArrayList<String> spaceReplacedRack;
@@ -41,13 +36,13 @@ public class BlankSpaceHandler {
         }
     }
 
-    public ArrayList<String> getBlankReplacedRacks(String rackWithSpaces) {
+    public ArrayList<String> getBlankSpaceReplacedRacks(String rackWithSpaces) {
         generateRack(rackWithSpaces);
         return spaceReplacedRack;
     }
 
     public static void main(String args[]) {
         BlankSpaceHandler blankSpaceHandler = new BlankSpaceHandler();
-        System.out.println(blankSpaceHandler.getBlankReplacedRacks("ab_"));
+        System.out.println(blankSpaceHandler.getBlankSpaceReplacedRacks("_ab_"));
     }
 }
