@@ -5,10 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
-/**
- * Created by test on 7/25/2015.
- */
 public class Sowpods 
 {
 	HashMap<String, String> sowpodAnagramMap = new HashMap<String, String>();
@@ -49,4 +47,37 @@ public class Sowpods
 	{
 		Sowpods sowpods = new Sowpods();
 	}
+    
+    public ArrayList<String> getValidWords( String word ) {
+        ArrayList<String> validWords = new ArrayList<String>();
+        validWords.add("Hello");
+        List<String> powerSets = new ArrayList<>();
+        
+        powerSets = generatePowerSets(word);
+        String key = "";
+        for ( String s: powerSets ) {
+            key = sortWord(s);
+        }
+        return validWords;
+    }
+    
+    private List<String> generatePowerSets(String word) 
+    {
+        List<String> powerSets = new ArrayList<>();
+        return combo("", word, powerSets);
+    }
+    private List<String> combo(String prefix, String s, List<String> powerSets) 
+    {
+    
+        int N = s.length();
+
+        if ( prefix.length() > 1 ) {
+            powerSets.add(prefix);
+        }
+
+        for (int i = 0 ; i < N ; i++) {
+           combo(prefix + s.charAt(i), s.substring(i+1), powerSets);
+        }
+        return powerSets;
+    }
 }
