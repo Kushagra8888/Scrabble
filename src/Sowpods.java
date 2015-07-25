@@ -50,13 +50,12 @@ public class Sowpods
     
     public ArrayList<String> getValidWords( String word ) {
         ArrayList<String> validWords = new ArrayList<String>();
-        validWords.add("Hello");
-        List<String> powerSets = new ArrayList<>();
+        List<String> powerSets = new ArrayList<String>();
         
         powerSets = generatePowerSets(word);
-        String key = "";
         for ( String s: powerSets ) {
-            key = sortWord(s);
+           String key = sortWord(s);
+           validWords.add(fetchSowpodWordFor(key));
         }
         return validWords;
     }
