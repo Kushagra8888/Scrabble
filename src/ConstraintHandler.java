@@ -2,8 +2,7 @@
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import Sowpods;
-import BlankSpaceHandler;
+
 
 class ConstraintHandler
 {
@@ -12,7 +11,7 @@ class ConstraintHandler
     
     public ConstraintHandler()
     {
-        s  = new Sowpopds();
+        s  = new Sowpods();
         b = new BlankSpaceHandler();
     }
 
@@ -26,7 +25,7 @@ class ConstraintHandler
             patternToCheck = generateRegex(constraint);
             rack = modifyRack(rack, constraint);
         }
-        ArrayList<String> modified_racks = b.getBlankSpaceReplacedRacks(rack);
+        ArrayList<String> modified_racks = b.getBlankReplacedRacks(rack);
         
         for (String rack : modified_racks)
         {
