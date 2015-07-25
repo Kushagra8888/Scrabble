@@ -213,22 +213,28 @@ public:
 
 int main(int argc, char* argv[]) {
     ifstream file;
-    cout << "Enter the file path of the dictionary!\n";
     string FILENAME ;
+    string constraint;
+    string rackOfLetters;
+    
+    cout << "Enter the file path of the dictionary!\n";
     cin >> FILENAME ;
+    
     cout << "Enter a constraint.\n";
-	string constraint;
-	cin >> constraint;
-	string rackOfLetters;
-	cout << "Enter the letters of the rack (use * for blank tile)\n";
-	cin >> rackOfLetters;
+    cin >> constraint;
+
+    cout << "Enter the letters of the rack (use _ for blank tile)\n";
+    cin >> rackOfLetters;
+    
     try {
-		file.open(FILENAME.c_str());
-		ScrabbleWordSuggestor scrabble(rackOfLetters, constraint, file);
-        cout << endl << endl;
-        scrabble.generateScoredList(rackOfLetters);
-        scrabble.suggestWords();
+      file.open(FILENAME.c_str());
+      ScrabbleWordSuggestor scrabble(rackOfLetters, constraint, file);
+      cout << endl << endl;
+      //     scrabble.generateScoredList(rackOfLetters);
+      scrabble.suggestWords();
     }
-	
+    catch (std::ifstream::failure e) {
+      std::cerr << "Exception opening/reading/closing file\n";
+    }	
   return 0;
 }
