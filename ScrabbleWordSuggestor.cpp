@@ -47,7 +47,7 @@ public:
       }
     }
   }
-
+  
   
   string getSortedString(string word) {
     std::string sortedWord = word;
@@ -68,8 +68,10 @@ public:
 
     for ( pair<string,int> p : POWERSET_RACKS ) {
       for ( string anagram : findInSowpodsMap(p.first)) {
-	int score = computeScore(anagram, p.second);
-	insertInScoredList(score, anagram);
+	if(!constraint.empty() && regex_match(s,patternToCheck)){
+	  int score = computeScore(anagram, p.second);
+	  insertInScoredList(score, anagram);
+	}
       }
     }
   }
@@ -185,9 +187,7 @@ public:
 
       cout << r->first << "\t\t" ;
       for ( string s : r->second ) {
-	if(!constraint.empty() && regex_match(s,patternToCheck)){
-	  cout << s << " " ;
-	}
+	cout << s << " " ;
       }
       cout << endl;
     }
