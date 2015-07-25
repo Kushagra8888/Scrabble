@@ -35,5 +35,7 @@ Replace the blanks with all all possible characters and proceed as before.
 ##Added Constraints (Team 3)
 
 Team 3 will deal with the additional constraints.
-Get words with a specified length
-Get words that contain specified letters
+1. Get words with a specified length.
+2. Get words that contain specified letters.
+
+Approach: Construct a regular expression with the given constraints and return all possible words that match the regex.
