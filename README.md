@@ -55,12 +55,12 @@ APIS
 
 ### BlankSpaceHandler (Team 2)
 
-###Class: BlankSpaceHandler
+####Class: BlankSpaceHandler
 1. ArrayList<String> getBlankReplacedRacks(string rack);
 
 ### ConstraintHandler (Team 3)
 
-###Class: ConstraintHandler
+####Class: ConstraintHandler
 1. arraylist<string> fetchValidWords(rack, n)
 2. arraylist<string> fetchValidWords(rack, constraint, n)
 
