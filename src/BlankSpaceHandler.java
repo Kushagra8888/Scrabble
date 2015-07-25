@@ -48,6 +48,6 @@ public class BlankSpaceHandler {
 
     public static void main(String args[]) {
         BlankSpaceHandler blankSpaceHandler = new BlankSpaceHandler();
-        System.out.println(blankSpaceHandler.getBlankReplacedRacks("ab_"));
+        System.out.println(blankSpaceHandler.getBlankReplacedRacks("_ab_"));
     }
 }

@@ -8,7 +8,7 @@ import BlankSpaceHandler;
 class ConstraintHandler
 {
     Sowpods s;
-    BlankSpaceHandler b;
+    BlankSpaceHitandler b;
     
     public ConstraintHandler()
     {
