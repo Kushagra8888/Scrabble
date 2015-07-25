@@ -11,7 +11,7 @@
 
 using namespace std;
 
-const string EMPTY_TILE = "*";
+const string EMPTY_TILE = "_";
 const int MAX_RACK_LENGTH = 7;
 
 const int ALPHABET_SCORE[] = {1,3,3,2, 1,4,2,4, 1,8,5,1,3, 1,1,3,10, 1,1,1,1, 4,4,8,4, 10};
@@ -24,25 +24,41 @@ public:
   map< int, vector<string> > scored_list;
   set < pair<string,int> > POWERSET_RACKS;
   string RACK_STRING;
+  string constraint;
   regex patternToCheck;
   
 public: 
   
-  ScrabbleWordSuggestor(string rack, string constraint, ifstream& sowpodsFile) {
+  ScrabbleWordSuggestor(string rack, string cons, ifstream& sowpodsFile) {
 
+    constraint = cons;
     if(!(constraint.empty())){	
-      patternToCheck = constraint;      
+      patternToCheck = generateRegex();      
     }
     
     generateSowpodsMap(sowpodsFile);
     generateScoredList(rack);
   }
 
+  string generateRegex(){
+
+    string regex = "";
+    for(int i = 0; i < constraint.size(); i++)
+      {
+	if(constraint[i] == '*')
+	  {
+	    regex = regex + "[a-z]*";
+	  }
+	else
+	  regex = regex + constraint[i];
+      }
+    return regex;
+  }
 
   void generateSowpodsMap(ifstream &file) {
     string word;
     while(getline(file, word)) {
-      if ( word.length() <=  MAX_RACK_LENGTH ) {
+      if ( word.length() <=  MAX_RACK_LENGTH ) { 
 	insertInMap(getSortedString(word), word);
       }
     }
@@ -68,7 +84,7 @@ public:
 
     for ( pair<string,int> p : POWERSET_RACKS ) {
       for ( string anagram : findInSowpodsMap(p.first)) {
-	if(!constraint.empty() && regex_match(s,patternToCheck)){
+	if(!constraint.empty() && regex_match(anagram, patternToCheck)){
 	  int score = computeScore(anagram, p.second);
 	  insertInScoredList(score, anagram);
 	}
@@ -187,7 +203,7 @@ public:
 
       cout << r->first << "\t\t" ;
       for ( string s : r->second ) {
-	cout << s << " " ;
+	   cout << s << " " ;
       }
       cout << endl;
     }
@@ -199,10 +215,10 @@ public:
 int main(int argc, char* argv[]) {
   ifstream file;
   string FILENAME = "/tmp/wordList.txt";
-  string constraint = ",p,l,";
+  string constraint = "a*c";
   try {
     file.open(FILENAME.c_str());
-    ScrabbleWordSuggestor scrabble("apple*d", constraint, file);
+    ScrabbleWordSuggestor scrabble("a_c_tz", constraint, file);
     scrabble.suggestWords();
     cout << "======================================================================================================================" << endl;
   }
