@@ -35,12 +35,12 @@ public class ConstraintHandler {
         }
         System.out.println("Pattern: " + patternToCheck);
         System.out.println("Modified Rack: " + rack);
-        ArrayList<String> modified_racks = b.getBlankReplacedRacks(rack);
+        ArrayList<String> modified_racks = b.getBlankSpaceReplacedRacks(rack);
         
         System.out.println(modified_racks);
         for (String each_rack : modified_racks)
         {
-            possibleWords = s.getValidWordsFor(each_rack);
+            possibleWords = s.getValidWords(each_rack);
             for( String word: possibleWords)
             {
                 if(isMatching(word, patternToCheck))
