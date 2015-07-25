@@ -12,7 +12,7 @@
 using namespace std;
 
 const string EMPTY_TILE = "_";
-const int MAX_RACK_LENGTH = 7;
+const int MAX_RACK_LENGTH = 10;
 
 const int ALPHABET_SCORE[] = {1,3,3,2, 1,4,2,4, 1,8,5,1,3, 1,1,3,10, 1,1,1,1, 4,4,8,4, 10};
 
@@ -197,8 +197,7 @@ public:
   }
 
   
-  void suggestWords(){
-    	
+  void suggestWords(){    	
     for ( map<int, vector<string> >::reverse_iterator r = scored_list.rbegin(); r != scored_list.rend(); ++r ) {
 
       cout << r->first << "\t\t" ;
@@ -206,25 +205,30 @@ public:
 	   cout << s << " " ;
       }
       cout << endl;
+
     }
   }
 };
 
 
-/* we accept . for character and * for zero or more character in constratint */
 int main(int argc, char* argv[]) {
-  ifstream file;
-  string FILENAME = "/tmp/wordList.txt";
-  string constraint = "a*c";
-  try {
-    file.open(FILENAME.c_str());
-    ScrabbleWordSuggestor scrabble("a_c_tz", constraint, file);
-    scrabble.suggestWords();
-    cout << "======================================================================================================================" << endl;
-  }
-  catch (std::ifstream::failure e) {
-    std::cerr << "Exception opening/reading/closing file\n";
-  }
-
+    ifstream file;
+    cout << "Enter the file path of the dictionary!\n";
+    string FILENAME ;
+    cin >> FILENAME ;
+    cout << "Enter a constraint.\n";
+	string constraint;
+	cin >> constraint;
+	string rackOfLetters;
+	cout << "Enter the letters of the rack (use * for blank tile)\n";
+	cin >> rackOfLetters;
+    try {
+		file.open(FILENAME.c_str());
+		ScrabbleWordSuggestor scrabble(rackOfLetters, constraint, file);
+        cout << endl << endl;
+        scrabble.generateScoredList(rackOfLetters);
+        scrabble.suggestWords();
+    }
+	
   return 0;
 }
